@@ -125,14 +125,10 @@ class BookController extends Controller
 
     public function destroy(Book $book)
     {
-        if ($book->loans()->where('status', '!=', 'expired')->exists()) {
-            return redirect()->route('book.index')->with('error', 'Buku sedang dipinjam');
-        } else {
-            File::delete($book->thumbnail);
-            File::delete(storage_path('app/private/' . $book->file_url));
-            $book->delete();
-            return redirect()->route('book.index')->with('success', 'Buku berhasil dihapus');
-        }
+        File::delete($book->thumbnail);
+        File::delete(storage_path('app/private/' . $book->file_url));
+        $book->delete();
+        return redirect()->route('book.index')->with('success', 'Buku berhasil dihapus');
     }
 
     public function viewBook($filename): Response
