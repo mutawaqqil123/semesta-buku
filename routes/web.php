@@ -32,6 +32,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function() {
     // buku
     Route::resource('book', BookController::class);
     Route::get('book/{book}/publish', [BookController::class, 'publish'])->name('book.publish');
+    Route::get('book/{book}/premium', [BookController::class, 'premium'])->name('book.premium');
     Route::get('view-buku/{filename}', [BookController::class, 'viewBook'])->name('view.book');
 
     // Route::resource('langganan', LanggananController::class);
@@ -60,9 +61,9 @@ Route::middleware(['auth', 'role:user', 'verified'])->group(function () {
     Route::delete('user-subs/{subs}', [SubscriptionController::class, 'destroy'])->name('user-subs.destroy');
 });
 
-Route::middleware(['auth', 'role:user', 'verified', 'check.subscription'])->group(function () {
+Route::middleware(['auth', 'role:user', 'verified'])->group(function () {
     Route::get('user/view-buku/{filename}', [BookController::class, 'viewBook'])->name('user-view.book');
-    Route::get('user-view/book/{book}', [LandingPageController::class, 'bookView'])->name('user.book');
+    Route::get('user-view/book/{book}', [LandingPageController::class, 'bookView'])->name('user.book')->middleware('check.subscription');
 });
 
 require __DIR__.'/auth.php';

@@ -24,6 +24,26 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
+        {{-- show password --}}
+        <div class="block mt-4 mb-3">
+            <label for="show_password" class="inline-flex items-center">
+                <input id="show_password" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="show_password">
+                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Show Password') }}</span>
+            </label>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const checkbox = document.getElementById('show_password');
+                const passwordInput = document.getElementById('password');
+        
+                checkbox.addEventListener('change', function () {
+                    passwordInput.type = this.checked ? 'text' : 'password';
+                });
+            });
+        </script>        
+
+        <hr/>
         <!-- Remember Me -->
         <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">

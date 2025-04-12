@@ -34,6 +34,7 @@
                     <td>Author</td>
                     <td>Tahun Publikasi</td>
                     <td>Publish</td>
+                    <td>Premium</td>
                     <td>Action</td>
                   </thead>
                   <tbody>
@@ -57,6 +58,17 @@
                             <form method="GET" action="{{ route('book.publish', $book->token_book) }}">
                               <label class="switch">
                                 <input type="checkbox" name="publisher" {{ $book->status == 'available' ? 'checked' : '' }}
+                                  onchange="this.form.submit();">
+                                <span class="switch-state bg-primary"></span>
+                              </label>
+                            </form>
+                          </div>
+                        </td>
+                        <td class="text-center">
+                          <div class="flex-grow-1 icon-state">
+                            <form method="GET" action="{{ route('book.premium', $book->token_book) }}">
+                              <label class="switch">
+                                <input type="checkbox" name="premiumer" {{ $book->access_type == 'premium' ? 'checked' : '' }}
                                   onchange="this.form.submit();">
                                 <span class="switch-state bg-primary"></span>
                               </label>

@@ -31,6 +31,7 @@ class BookController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
         if ($request->hasFile('cover')) {
             $cover = $request->file('cover');
             $cover_path = 'images/book/';
@@ -43,6 +44,13 @@ class BookController extends Controller
         $file_name = time() . 'file.' . $file->getClientOriginalExtension();
         $file->storeAs($file_path, $file_name, 'local');
 
+        $premium = $request->input('premium', false);
+        if ($premium) {
+            $access_type = 'premium';
+        } else {
+            $access_type = 'free';
+        }
+
         $book = Book::create([
             'title' => $request->title,
             'author' => $request->author,
@@ -52,6 +60,7 @@ class BookController extends Controller
             'description' => $request->description,
             'thumbnail' => $cover_path . $cover_name,
             'file_url' => $file_path . $file_name,
+            'access_type' => $access_type,
         ]);
 
         // $book->subcategory()->sync($request->input('category', []));
@@ -77,6 +86,20 @@ class BookController extends Controller
                 'status' => 'unavailable',
             ]);
             return redirect()->route('book.index')->with('success', 'Buku berhasil diunpublikasikan');
+        }
+    }
+    public function premium(Book $book)
+    {
+        if (isset($_GET['premiumer'])) {
+            $book->update([
+                'access_type' => 'premium',
+            ]);
+            return redirect()->route('book.index')->with('success', 'Buku berhasil di gratiskan');
+        } else {
+            $book->update([
+                'access_type' => 'free',
+            ]);
+            return redirect()->route('book.index')->with('success', 'Buku berhasil di premiumkan');
         }
     }
 
@@ -115,6 +138,13 @@ class BookController extends Controller
             $file_name = time() . 'file.' . $file->getClientOriginalExtension();
             $file->storeAs($file_path, $file_name, 'local');
             $data['file_url'] = $file_path . $file_name;
+        }
+
+        $premium = $request->input('premium', false);
+        if ($premium) {
+            $data['access_type'] = 'premium';
+        } else {
+            $data['access_type'] = 'free';
         }
 
         $book->update($data);

@@ -97,6 +97,16 @@
                       </div>
                       <div class="col-sm-12">
                         <div class="mb-3">
+                          <label for="" class="form-check-label">
+                            <input type="checkbox" name="premium" id="" class="form-check-input" value="premium" {{ old('premium', $book->access_type) === 'premium' ? 'checked' : '' }}> Premium ?
+                          </label>
+                          @error('status')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                          @enderror
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="mb-3">
                           <label>Kategori / Genre</label>
                           <select class="form-select js-example-basic-multiple @error('category') is-invalid @enderror"
                             name="category[]" required multiple="multiple">

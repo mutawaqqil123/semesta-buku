@@ -78,6 +78,29 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+        {{-- show password --}}
+        <div class="block mt-4 mb-3">
+            <label for="show_password" class="inline-flex items-center">
+                <input id="show_password" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="show_password">
+                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Show Password') }}</span>
+            </label>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const checkbox = document.getElementById('show_password');
+                const passwordInput = document.getElementById('password');
+                const confirmPassword = document.getElementById('password_confirmation');
+        
+                checkbox.addEventListener('change', function () {
+                    passwordInput.type = this.checked ? 'text' : 'password';
+                });
+                checkbox.addEventListener('change', function () {
+                    confirmPassword.type = this.checked ? 'text' : 'password';
+                });
+            });
+        </script>
+
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
                 {{ __('Already registered?') }}
