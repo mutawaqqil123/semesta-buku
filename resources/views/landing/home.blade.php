@@ -194,5 +194,4 @@
       </div>
     </div>
   </section>
-ader
 </x-landing>

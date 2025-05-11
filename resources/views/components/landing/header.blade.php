@@ -1,7 +1,7 @@
 <header class="header_area header_relative">
   <nav class="navbar navbar-expand-lg menu_one" id="header">
     <div class="container">
-      <a class="navbar-brand" href="index.html"><x-application-logo></x-application-logo></a>
+      <a class="navbar-brand" href="/"><x-application-logo></x-application-logo></a>
       <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
         aria-label="Toggle navigation">
@@ -19,11 +19,11 @@
       </button>
       <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
         <ul class="navbar-nav menu w_menu ms-auto me-auto">
-          <li class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}">
+          {{-- <li class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}">
             <a class="nav-link" href="/" aria-haspopup="true" aria-expanded="false">
               HOME
             </a>
-          </li>
+          </li> --}}
           <li class="nav-item {{ request()->routeIs('produk') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('produk') }}" aria-haspopup="true" aria-expanded="false">
               BUKU
@@ -48,7 +48,7 @@
         @guest
           <a class="bj_theme_btn strock_btn hidden-sm hidden-xs" href="{{ route('login') }}"><i
               class="fa-regular fa-user"></i>Login</a>
-          <a class="bj_theme_btn p-3 ms-3" href="{{ route('register') }}"><i class="fa-regular fa-user"></i>Register</a>
+          {{-- <a class="bj_theme_btn p-3 ms-3" href="{{ route('register') }}"><i class="fa-regular fa-user"></i>Register</a> --}}
         @endguest
         @auth
           <div class="dropdown">
