@@ -63,6 +63,7 @@
                   </div>
                 </div>
                 <div class="card-footer text-end">
+                  <a href="" class="btn btn-danger">Reset</a>
                   <button class="btn btn-secondary" type="submit">Save changes</button>
                 </div>
               </form>
@@ -70,8 +71,9 @@
           </div>
           <div class="col-sm-8">
             <div class="card">
-              <div class="card-header py-3 border-bottom">
+              <div class="card-header py-3 border-bottom d-flex justify-content-between">
                 <h3>List Plan</h3>
+                <h4>Total: {{ $plans->count() }}</h4>
               </div>
               <div class="card-body">
                 <div class="dt-ext table-responsive">
@@ -168,6 +170,7 @@
                       </div>
                 </div>
                 <div class="modal-footer">
+                  <a href="" class="btn btn-danger me-auto">Reset</a>
                   <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Close</button>
                   <button class="btn btn-secondary" type="submit">Save changes</button>
                 </div>

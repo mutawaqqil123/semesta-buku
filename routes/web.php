@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BlogCategoryController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
@@ -39,6 +41,13 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function() {
 
     // plan
     Route::resource('plan', PlanController::class)->only(['index', 'store', 'update', 'destroy']);
+
+    Route::resource('blog_kategori', BlogCategoryController::class)->only(['index', 'store']);
+    Route::patch('blog_kategori/{blogCategory}', [BlogCategoryController::class, 'update'])->name('blog_kategori.update');
+    Route::delete('blog_kategori/{blogCategory}', [BlogCategoryController::class, 'destroy'])->name('blog_kategori.destroy');
+    Route::resource('blogs', BlogController::class)->except(['show']);
+
+    Route::post('/upload', [BlogController::class, 'upload'])->name('ckeditor.upload');
 });
 
 Route::middleware(['guest.auth'])->group(function() {
@@ -49,8 +58,12 @@ Route::middleware(['guest.auth'])->group(function() {
     Route::get('produk/{book}/detail', [LandingPageController::class, 'produkDetail'])->name('produk.single');
     Route::get('subscribtion', [SubscriptionController::class, 'index'])->name('subscribe.index');
 
+    Route::get('/book-blog', [LandingPageController::class, 'blog'])->name('landing.blog');
+    Route::get('/detail/{slug}/blog', [LandingPageController::class, 'blog_detail'])->name('blog.single');
+
     Route::get('faq', [LandingPageController::class, 'faq'])->name('faq');
     Route::get('kontak', [LandingPageController::class, 'kontak'])->name('kontak');
+
 });
 
 Route::middleware(['auth', 'role:user', 'verified'])->group(function () {

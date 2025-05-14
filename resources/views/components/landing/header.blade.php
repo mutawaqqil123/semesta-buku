@@ -34,11 +34,27 @@
               Subscribe
             </a>
           </li>
+
+          <li class="nav-item dropdown submenu {{ request()->routeIs(['landing.blog', 'blog.single']) ? 'active' : '' }}">
+            <a class="nav-link dropdown-toggle" href="{{ route('landing.blog') }}" role="button" data-bs-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Blog
+            </a>
+            <ul class="dropdown-menu">
+              @foreach (\App\Models\BlogCategory::get() as $item)
+                <li class="nav-item {{ request()->query('key') == $item->token_category ? 'active' : '' }}">
+                  <a href="{{ route('landing.blog') }}?key={{ $item->token_category }}" class="nav-link">{{ $item->name }}</a>
+                </li>
+              @endforeach
+            </ul>
+          </li>
+
           <li class="nav-item {{ request()->routeIs('faq') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('faq') }}" aria-haspopup="true" aria-expanded="false">
               FAQ
             </a>
           </li>
+
           <li class="nav-item {{ request()->routeIs('kontak') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('kontak') }}" aria-haspopup="true" aria-expanded="false">
               Kontak
@@ -54,7 +70,8 @@
           <div class="dropdown">
             <a class="nav-link d-flex align-items-center" href="#" id="navbarDropdown" role="button"
               data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="{{ asset('') }}{{ auth()->user()->profile->avatar ?? 'assets/images/dashboard/profile.png' }}"
+              <img
+                src="{{ asset('') }}{{ auth()->user()->profile->avatar ?? 'assets/images/dashboard/profile.png' }}"
                 alt="{{ Auth::user()->name }}" class="rounded-circle me-1" width="40" height="40">
               <div class="ms-2" style="color: black;">
                 <div class="d-flex align-items-center">

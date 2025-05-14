@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
@@ -60,5 +61,28 @@ class LandingPageController extends Controller
     public function kontak()
     {
         return view('landing.other.kontak');
+    }
+
+    public function blog(Request $request)
+    {
+        $token = $request->input('key');
+
+        $blogs = Blog::with(['category', 'writer'])
+            ->whereHas('category', function ($query) use ($token) {
+                $query->when($token, function ($q) use ($token) {
+                $q->where('token_category', $token);
+                });
+            })
+            ->paginate(12)
+            ->withQueryString();
+
+        return view('landing.blogs', compact('blogs'));
+    }
+
+    public function blog_detail($slug)
+    {
+        $blog = Blog::where('slug', $slug)->first();
+
+        return view('landing.blog_detail', compact('blog'));
     }
 }

@@ -11,7 +11,7 @@
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"> <i data-feather="home"></i></a></li>
                 <li class="breadcrumb-item">Menu</li>
-                <li class="breadcrumb-item">Category</li>
+                <li class="breadcrumb-item"><a href="{{ route('category.index') }}">Category</a></li>
                 <li class="breadcrumb-item active">{{ $category->name }}</li>
               </ol>
             </div>
@@ -40,6 +40,7 @@
                   </div>
                 </div>
                 <div class="card-footer text-end">
+                  <a class="btn btn-outline-danger" href="">Reset</a>
                   <button class="btn btn-secondary" type="submit">Save changes</button>
                 </div>
               </form>
@@ -49,6 +50,7 @@
             <div class="card">
               <div class="card-header py-2 border-bottom d-flex justify-content-between align-items-center">
                 <h3>List Sub Category {{ $category->name }}</h3>
+                <h4>Total: {{ $category->subcategory->count() }}</h4>
                 <a href="{{ route('category.index') }}" class="btn btn-warning">Kembali</a>
               </div>
               <div class="card-body">
@@ -80,19 +82,11 @@
                           </td>
                         </tr>
                       @empty
-                        <tr>
-                          <td colspan="5" class="text-center">Data not found</td>
+                      <tr>
+                            <td colspan="5" class="text-center">Data not found</td>
                         </tr>
                       @endforelse
                     </tbody>
-                    <tfoot>
-                      <tr>
-                        <th>#</th>
-                        <th> Sub Name</th>
-                        <th>Jumlah Buku</th>
-                        <th>Action</th>
-                      </tr>
-                    </tfoot>
                   </table>
                 </div>
               </div>
@@ -126,6 +120,7 @@
                   </div>
                 </div>
                 <div class="modal-footer">
+                    <a href="" class="btn btn-outline-danger me-auto">Reset</a>
                   <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Close</button>
                   <button class="btn btn-secondary" type="submit">Save changes</button>
                 </div>

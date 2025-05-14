@@ -33,19 +33,27 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('') }}assets/css/vendors/sweetalert2.css">
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
 <style>
-    /* Hide the up and down arrows for input type number */
-    input[type="number"]::-webkit-outer-spin-button,
-    input[type="number"]::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
+  /* Hide the up and down arrows for input type number */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
-    input[type="number"] {
-        -moz-appearance: textfield;
-    }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
 </style>
 
 <link rel="stylesheet" href="{{ asset('assets/select2/css/select2.min.css') }}">
 <!-- PDF.js Core -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
 
+<script src="https://cdn.ckeditor.com/ckeditor5/41.0.0/classic/ckeditor.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
+<style>
+  .ck-editor__editable_inline {
+    height: 300px;
+  }
+</style>

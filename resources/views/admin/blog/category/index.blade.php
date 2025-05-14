@@ -1,16 +1,17 @@
 <x-template>
-  <x-slot:title>Admin Semesta Buku - Category</x-slot:title>
+  <x-slot:title>Admin Semesta Buku - Blog Category</x-slot:title>
   <div class="page-body">
     <div class="container-fluid">
       <div class="page-title">
         <div class="row">
           <div class="col-6">
-            <h3>Category</h3>
+            <h3>Blog Category</h3>
           </div>
           <div class="col-6">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"> <i data-feather="home"></i></a></li>
               <li class="breadcrumb-item">Menu</li>
+              <li class="breadcrumb-item">Blog</li>
               <li class="breadcrumb-item active">Category</li>
             </ol>
           </div>
@@ -23,31 +24,19 @@
         <div class="col-sm-4">
           <div class="card">
             <div class="card-header py-3 border-bottom">
-              <h3>Form Create Category</h3>
+              <h3>Form Create Blog Category</h3>
             </div>
-            <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data"
-              class="needs-validation" novalidate>
+            <form action="{{ route('blog_kategori.store') }}" method="POST"
+              class="needs-validation">
               <div class="card-body">
                 @csrf
-                <div class="mb-3">
+                <div class="">
                   <label for="name" class="form-label">Name</label>
                   <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                     name="name" value="{{ old('name') }}" required>
                   @error('name')
                     <div class="invalid-feedback">{{ $message }}</div>
                   @enderror
-                </div>
-                <div class="mb-3">
-                  <label for="icon" class="form-label">Icon</label>
-                  <div id="drop-area-create" class="border p-3 text-center">
-                    <p>Drag & Drop your image here or click to select</p>
-                    @error('icon')
-                      <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                    <input type="file" class="form-control d-none @error('icon') is-invalid @enderror"
-                      id="icon-create" name="icon" accept="image/*" required>
-                    <img id="preview-create" src="#" alt="Image Preview" class="img-fluid mt-3 d-none" />
-                  </div>
                 </div>
               </div>
               <div class="card-footer text-end">
@@ -70,8 +59,7 @@
                     <tr>
                       <th>#</th>
                       <th>Name</th>
-                      <th>Sub Category</th>
-                      <th>Shorthand</th>
+                      <th>Jumlah Berita</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -79,10 +67,8 @@
                     @forelse ($categories as $item)
                       <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td><img src="{{ asset($item->icon) }}" alt="{{ $item->name }}" class="img-thumbnail"
-                            style="width: 50px; height: 50px; object-fit: cover;"> {{ $item->name }}</td>
-                        <td>{{ $item->subcategory->count() }}</td>
-                        <td><a href="{{ route('sub-category.index', $item->token_category) }}">Lis Sub Kategori {{ $item->name }}</a></td>
+                        <td> {{ $item->name }}</td>
+                        <td>{{ $item->blogs->count() }}</td>
                         <td>
                           <ul class="action">
                             <li class="edit"> <a role="button" data-bs-toggle="modal"
@@ -118,7 +104,7 @@
               <h3 class="modal-title" id="exampleModalLabel">Form Edit {{ $item->name }}</h3>
               <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{ route('category.update', $item->token_category) }}" method="POST"
+            <form action="{{ route('blog_kategori.update', $item->token_category) }}" method="POST"
               enctype="multipart/form-data" class="needs-validation" novalidate>
               @csrf
               @method('PATCH')
@@ -131,19 +117,6 @@
                   @error('name')
                     <div class="invalid-feedback">{{ $message }}</div>
                   @enderror
-                </div>
-                <div class="mb-3">
-                  <label for="icon{{ $item->token_category }}" class="form-label">Icon</label>
-                  <div id="drop-area{{ $item->token_category }}" class="border p-3 text-center">
-                    <p>Drag & Drop your image here or click to select</p>
-                    @error('icon')
-                      <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                    <input type="file" class="form-control d-none @error('icon') is-invalid @enderror"
-                      id="icon{{ $item->token_category }}" name="icon" accept="image/*" required>
-                    <img id="preview{{ $item->token_category }}" src="{{ $item->icon }}" alt="Image Preview"
-                      class="img-fluid mt-3" />
-                  </div>
                 </div>
               </div>
               <div class="modal-footer">
@@ -171,7 +144,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <form action="{{ route('category.destroy', $item->token_category) }}" method="POST" class="d-inline">
+              <form action="{{ route('blog_kategori.destroy', $item->token_category) }}" method="POST" class="d-inline">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Delete</button>

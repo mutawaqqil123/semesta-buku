@@ -29,8 +29,9 @@
               <div class="card-header py-3 border-bottom d-flex justify-content-between align-items-center">
                 <h3>Form Edit Buku {{ $book->title }}</h3>
                 <div class="btn-group">
-                  <a href="{{ route('book.index') }}" class="btn btn-warning">Kembali</a>
-                  <button type="submit" class="btn btn-primary">Update</button>
+                    <a href="" class="btn btn-danger">- Reset</a>
+                  <a href="{{ route('book.index') }}" class="btn btn-warning">< Kembali</a>
+                  <button type="submit" class="btn btn-primary">^ Update</button>
                 </div>
               </div>
               <div class="card-body">

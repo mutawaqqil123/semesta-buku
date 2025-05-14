@@ -28,7 +28,8 @@
               <div class="card-header py-3 border-bottom d-flex justify-content-between align-items-center">
                 <h3>Form Tambah Buku</h3>
                 <div class="btn-group">
-                  <a href="{{ route('book.index') }}" class="btn btn-warning">Kembali</a>
+                    <a href="" class="btn btn-danger">- Reset</a>
+                  <a href="{{ route('book.index') }}" class="btn btn-warning">< Kembali</a>
                   <button type="submit" class="btn btn-primary">+ Submit</button>
                 </div>
               </div>
