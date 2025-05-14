@@ -58,6 +58,9 @@
           <li class="sidebar-list"> <a
               class="sidebar-link sidebar-title link-nav {{ request()->routeIs(['blogs.index', 'blogs.create', 'blogs.edit']) ? 'bg-primary' : '' }}"
               href="{{ route('blogs.index') }}"><i data-feather="file-text"> </i><span>Berita</span></a></li>
+          <li class="sidebar-list"> <a
+              class="sidebar-link sidebar-title link-nav {{ request()->routeIs(['blogs.index', 'blogs.create', 'blogs.edit']) ? 'bg-primary' : '' }}"
+              href="{{ route('rate.index') }}"><i data-feather="users"> </i><span>Kritik Saran</span></a></li>
         </ul>
         <div class="sidebar-img-section">
           <div class="sidebar-img-content">

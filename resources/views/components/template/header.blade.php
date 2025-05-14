@@ -75,7 +75,8 @@
             </div>
           </div>
           <ul class="profile-dropdown onhover-show-div">
-            <li><a href="{{ route('profile.edit') }}"><i data-feather="user"></i><span>Account </span></a></li>
+            <li><a href="{{ route('profile.edit') }}"><i data-feather="user"></i><span>Profile </span></a></li>
+            <li><a href="{{ route('password.edit') }}"><i data-feather="lock"></i><span>Password </span></a></li>
             <li>
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf

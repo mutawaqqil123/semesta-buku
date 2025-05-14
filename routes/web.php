@@ -9,6 +9,7 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LanggananController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RateController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\SubscriptionController;
 use App\Models\Subscription;
@@ -22,6 +23,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::middleware(['auth', 'verified', 'role:admin'])->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::resource('rate', RateController::class)->only('index');
+    Route::get('rate/{rating}', [RateController::class, 'destroy'])->name('rate.remove');
 
     // kategori
     Route::resource('category', CategoryController::class)->only(['index', 'store', 'update', 'destroy']);
@@ -72,6 +76,7 @@ Route::middleware(['auth', 'role:user', 'verified'])->group(function () {
     Route::get('success/{transaction}', [SubscriptionController::class, 'success'])->name('success');
     Route::get('user-subs', [SubscriptionController::class, 'userSubs'])->name('user.subs');
     Route::delete('user-subs/{subs}', [SubscriptionController::class, 'destroy'])->name('user-subs.destroy');
+    Route::post('/rating', [LandingPageController::class, 'rating'])->name('rating.post');
 });
 
 Route::middleware(['auth', 'role:user', 'verified'])->group(function () {

@@ -27,6 +27,11 @@
                         {{ __('Profile') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('password.edit')" :active="request()->routeIs('password.edit')">
+                        {{ __('Password') }}
+                    </x-nav-link>
+                </div>
                 @if (auth()->user()->hasRole('user'))
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('user.subs')" :active="request()->routeIs('user.subs')">

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Book;
+use App\Models\Rating;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LandingPageController extends Controller
 {
@@ -84,5 +86,20 @@ class LandingPageController extends Controller
         $blog = Blog::where('slug', $slug)->first();
 
         return view('landing.blog_detail', compact('blog'));
+    }
+
+    public function rating(Request $request)
+    {
+        // dd($request->all());
+
+        $data = [
+            'rating' => $request->rating,
+            'text' => $request->text,
+            'user_id' => Auth::user()->id
+        ];
+
+        Rating::create($data);
+
+        return redirect()->back()->with('success', "Berhasil menambahkan");
     }
 }

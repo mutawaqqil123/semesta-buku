@@ -10,7 +10,7 @@
                     <div class="col-6">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html"> <i data-feather="home"></i></a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
+                            <li class="breadcrumb-item active">Welcome</li>
                         </ol>
                     </div>
                 </div>
@@ -19,7 +19,7 @@
         <!-- Container-fluid starts-->
         <div class="container-fluid default-page">
             <div class="row">
-                <div class="col-xl-5 col-lg-5">
+                <div class="col-xl-12 col-lg-12">
                     <div class="card profile-greeting">
                         <div class="card-body">
                             <div>
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-7 col-lg-7">
+                {{-- <div class="col-xl-7 col-lg-7">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="card">
@@ -68,9 +68,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-md-12 col-xl-12">
                     <div class="card">
                         <div class="card-body">
@@ -83,7 +83,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <!-- Container-fluid Ends-->
     </div>
