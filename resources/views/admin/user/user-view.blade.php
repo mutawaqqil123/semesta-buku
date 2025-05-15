@@ -83,6 +83,14 @@
                     <div class="text-danger">{{ $message }}</div>
                   @enderror
                 </div>
+                <div class="mb-3">
+                  <label for="telepon" class="form-label">Nomor WA</label>
+                  <input type="text" class="form-control" id="telepon" name="telepon" value="{{ old('telepon') }}"
+                    required>
+                  @error('telepon')
+                    <div class="text-danger">{{ $message }}</div>
+                  @enderror
+                </div>
 
                 <!-- Status -->
                 <div class="mb-3">
@@ -297,7 +305,12 @@
                 <div class="mb-3">
                   <label for="phone_edit_{{ $item->id }}" class="form-label">Nomor Telepon</label>
                   <input type="text" class="form-control" id="phone_edit_{{ $item->id }}" name="phone"
-                    value="{{ $item->phone }}" required>
+                    value="{{ $item->profile->phone }}" required>
+                </div>
+                <div class="mb-3">
+                  <label for="phone_edit_{{ $item->id }}" class="form-label">Nomor WA</label>
+                  <input type="text" class="form-control" id="phone_edit_{{ $item->id }}" name="telepon"
+                    value="{{ $item->profile->telepon }}" required>
                 </div>
 
                 <!-- Status -->

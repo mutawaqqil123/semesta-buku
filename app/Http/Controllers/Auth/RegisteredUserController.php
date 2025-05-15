@@ -35,6 +35,7 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'phone' => ['required', 'string', 'max:255'],
+            'telepon' => ['required', 'string', 'max:255'],
             'status' => ['required', 'string', 'max:255'],
             'education_level' => ['required', 'string', 'max:255'],
             'custom_education_level' => ['nullable', 'string', 'max:255'],
@@ -50,6 +51,7 @@ class RegisteredUserController extends Controller
             ['user_id' => $user->id],
             [
             'phone' => $request->phone,
+            'telepon' => $request->telepon,
             'status' => $request->status,
             'jenjang' => $request->education_level === 'other' ? $request->custom_education_level : $request->education_level,
             ]

@@ -24,6 +24,7 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'phone' => 'required|string|max:20',
+            'phone' => 'required|string|max:20',
             'status' => 'required|in:siswa,mahasiswa,umum',
             'education_level' => 'required|string',
             'custom_education_level' => 'nullable|string',
@@ -55,6 +56,7 @@ class UserController extends Controller
         // Simpan ke profile
         $user->profile()->create([
             'phone' => $validated['phone'],
+            'telepon' => $validated['telepon'],
             'status' => $validated['status'],
             'jenjang' => $finalEducationLevel,
             'avatar' => $avatarPath,
@@ -80,6 +82,7 @@ class UserController extends Controller
             'email.email' => 'Format email tidak valid.',
             'email.unique' => 'Email sudah digunakan.',
             'phone.required' => 'Nomor telepon wajib diisi.',
+            'telepon.required' => 'Nomor telepon wajib diisi.',
             'status.required' => 'Status wajib dipilih.',
             'status.in' => 'Status tidak valid.',
             'education_level.required' => 'Jenjang pendidikan wajib dipilih.',
@@ -96,6 +99,7 @@ class UserController extends Controller
                 'name' => 'required|string|max:255',
                 'email' => 'required|email|unique:users,email,' . $user->id,
                 'phone' => 'required|string|max:20',
+                'telepon' => 'required|string|max:20',
                 'status' => 'required|in:siswa,mahasiswa,umum',
                 'education_level' => 'required|string',
                 'custom_education_level' => 'nullable|string',
@@ -131,6 +135,7 @@ class UserController extends Controller
 
         $user->profile()->update([
             'phone' => $validated['phone'],
+            'phone' => $validated['telepon'],
             'status' => $validated['status'],
             'jenjang' => $finalEducationLevel,
             'avatar' => $avatarPath,

@@ -23,6 +23,12 @@
             <x-input-error :messages="$errors->get('phone')" class="mt-2" />
         </div>
 
+        <div class="mt-4">
+            <x-input-label for="telepon" :value="__('Telepon')" />
+            <x-text-input id="telepon" class="block mt-1 w-full" type="number" name="telepon" pattern="^\+62\d{9,13}$" :value="old('telepon')" required autocomplete="tel" />
+            <x-input-error :messages="$errors->get('telepon')" class="mt-2" />
+        </div>
+
         <!-- Status -->
         <div class="mt-4">
             <x-input-label for="status" :value="__('Status')" />
@@ -107,35 +113,6 @@
             }
             }
         </script>
-
-        {{-- show password --}}
-        {{-- <div class="block mt-4 mb-3">
-            <label for="show_password" class="inline-flex items-center">
-                <input id="show_password" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="show_password">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Show Password') }}</span>
-            </label>
-        </div>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const checkbox = document.getElementById('show_password');
-                const passwordInput = document.getElementById('password');
-                const confirmPassword = document.getElementById('password_confirmation');
-
-                checkbox.addEventListener('change', function () {
-                    passwordInput.type = this.checked ? 'text' : 'password';
-                });
-                checkbox.addEventListener('change', function () {
-                    confirmPassword.type = this.checked ? 'text' : 'password';
-                });
-            });
-        </script> --}}
-
-        {{-- <div class="mt-4 flex items-stretch flex-col justify-stretch ">
-            <x-primary-button class="mx-3 justify-center">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div> --}}\
 
         <div class="mt-4 flex items-center flex-row justify-center gap-2">
             <a class="inline-flex items-center px-4 py-2 bg-red-800 dark:bg-red-500 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-red-700 dark:hover:bg-pink focus:bg-red-700 dark:focus:bg-white active:bg-red-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150 w-full justify-center" href="">
