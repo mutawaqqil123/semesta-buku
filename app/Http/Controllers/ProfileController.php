@@ -26,6 +26,7 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+        // dd($request->all());
         $user = $request->user();
         $user->fill($request->validated());
 
@@ -33,15 +34,36 @@ class ProfileController extends Controller
             $user->email_verified_at = null;
         }
 
+        // Ambil data profile
+        $profile = $user->profile;
+
+        // Cek dan handle avatar baru
+        $avatarPath = $profile->avatar ?? null;
+
+        if ($request->hasFile('avatar')) {
+            // Hapus avatar lama kalau ada
+            if ($avatarPath && file_exists(public_path($avatarPath))) {
+                unlink(public_path($avatarPath));
+            }
+
+            // Upload avatar baru
+            $avatar = $request->file('avatar');
+            $avatarName = time() . '_' . uniqid() . '.' . $avatar->getClientOriginalExtension();
+            $avatar->move('user', $avatarName);
+            $avatarPath = 'user/' . $avatarName;
+        }
+
         $user->save();
 
+        // Update atau buat profile
         $user->profile()->updateOrCreate(
             ['user_id' => $user->id],
             [
-            'phone' => $request->phone,
-            'status' => $request->status,
-            'jenjang' => $request->education_level === 'other' ? $request->custom_education_level : $request->education_level,
-            ]
+                'phone' => $request->phone,
+                'status' => $request->status,
+                'jenjang' => $request->education_level === 'lainnya' ? $request->custom_education_level : $request->education_level,
+                'avatar' => $avatarPath,
+            ],
         );
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');

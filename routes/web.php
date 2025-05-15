@@ -12,6 +12,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RateController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\UserController;
 use App\Models\Subscription;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +22,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth', 'verified', 'role:admin'])->group(function() {
+Route::middleware(['auth', 'verified', 'role:admin|super_admin'])->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('rate', RateController::class)->only('index');
@@ -52,6 +53,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function() {
     Route::resource('blogs', BlogController::class)->except(['show']);
 
     Route::post('/upload', [BlogController::class, 'upload'])->name('ckeditor.upload');
+
 });
 
 Route::middleware(['guest.auth'])->group(function() {
@@ -68,6 +70,10 @@ Route::middleware(['guest.auth'])->group(function() {
     Route::get('faq', [LandingPageController::class, 'faq'])->name('faq');
     Route::get('kontak', [LandingPageController::class, 'kontak'])->name('kontak');
 
+});
+
+Route::middleware(['auth', 'role:super_admin', 'verified'])->group(function () {
+    Route::resource('usr', UserController::class)->only(['index', 'store', 'update', 'destroy']);
 });
 
 Route::middleware(['auth', 'role:user', 'verified'])->group(function () {

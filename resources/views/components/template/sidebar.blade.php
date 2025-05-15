@@ -52,15 +52,26 @@
               <h4 class="">Blog </h4>
             </div>
           </li>
+
           <li class="sidebar-list"> <a
               class="sidebar-link sidebar-title link-nav {{ request()->routeIs('blog_kategori.index') ? 'bg-primary' : '' }}"
               href="{{ route('blog_kategori.index') }}"><i data-feather="list"> </i><span>Blog Kategori</span></a></li>
           <li class="sidebar-list"> <a
               class="sidebar-link sidebar-title link-nav {{ request()->routeIs(['blogs.index', 'blogs.create', 'blogs.edit']) ? 'bg-primary' : '' }}"
               href="{{ route('blogs.index') }}"><i data-feather="file-text"> </i><span>Berita</span></a></li>
+          <li class="sidebar-main-title">
+            <div>
+              <h4 class="">Other & Setting </h4>
+            </div>
+          </li>
           <li class="sidebar-list"> <a
               class="sidebar-link sidebar-title link-nav {{ request()->routeIs(['blogs.index', 'blogs.create', 'blogs.edit']) ? 'bg-primary' : '' }}"
               href="{{ route('rate.index') }}"><i data-feather="users"> </i><span>Kritik Saran</span></a></li>
+          @if (auth()->user()->hasRole('super_admin'))
+            <li class="sidebar-list"> <a
+                class="sidebar-link sidebar-title link-nav {{ request()->routeIs(['blogs.index', 'blogs.create', 'blogs.edit']) ? 'bg-primary' : '' }}"
+                href="{{ route('usr.index') }}"><i data-feather="shield"> </i><span>User</span></a></li>
+          @endif
         </ul>
         <div class="sidebar-img-section">
           <div class="sidebar-img-content">

@@ -5,7 +5,7 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-6">
-                        <h3> Dashboard</h3>
+                        <h3> Selamat Datang</h3>
                     </div>
                     <div class="col-6">
                         <ol class="breadcrumb">

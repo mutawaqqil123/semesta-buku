@@ -31,12 +31,14 @@
         </style>
     </head>
     <body class="font-sans text-gray-900 antialiased" x-data="{ showCustomEducationLevel: false }">
+            @include('layout.guest_navigation')
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
             <div>
                 <a href="/">
                     <x-application-logo class="fill-current text-gray-500" width="250px" />
                 </a>
             </div>
+
 
             <div class="w-full mb-20 sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
