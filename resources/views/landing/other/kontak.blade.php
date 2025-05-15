@@ -15,19 +15,39 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <h5 class="card-title">Email</h5>
-                            <p class="card-text">support@semestabuku.com</p>
+                            <p class="card-text">- support@semestabuku.com</p>
+                            <a href="mailto:aqillazvegas655@gmail.com">
+                                <p class="card-text">- aqillazvegas655@gmail.com</p>
+                            </a>
                         </div>
                     </div>
                     <div class="card mb-4">
                         <div class="card-body">
                             <h5 class="card-title">Telepon</h5>
-                            <p class="card-text">(021) 123-4567</p>
+                            <p class="card-text">- (021) 123-4567</p>
+                            <p class="card-text">- 087 887 811 344</p>
                         </div>
                     </div>
                     <div class="card mb-4">
                         <div class="card-body">
                             <h5 class="card-title">Jam Operasional</h5>
                             <p class="card-text">Senin - Jumat, 09.00 - 17.00 WIB</p>
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Ikuti Kami</h5>
+                            <div class="d-flex justify-content-center">
+                                <a href="https://www.instagram.com/a_qiiillll?igsh=ZDNxMnhnbTQ4YjVq" target="_blank" class="me-3">
+                                    <i class="fab fa-instagram fa-2x text-danger"></i>
+                                </a>
+                                <a href="https://www.facebook.com/share/15qksvqKj8/" target="_blank" class="me-3">
+                                    <i class="fab fa-facebook fa-2x text-primary"></i>
+                                </a>
+                                <a href="http://t.me/Mutawaqqil01" target="_blank">
+                                    <i class="fab fa-telegram fa-2x text-info"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="card rounded text-center">
