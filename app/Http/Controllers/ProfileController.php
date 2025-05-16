@@ -60,13 +60,18 @@ class ProfileController extends Controller
             ['user_id' => $user->id],
             [
                 'phone' => $request->phone,
+                'telepon' => $request->telepon,
                 'status' => $request->status,
                 'jenjang' => $request->education_level === 'lainnya' ? $request->custom_education_level : $request->education_level,
                 'avatar' => $avatarPath,
             ],
         );
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        if ($user->hasRole('user')) {
+            return Redirect::route('home');
+        } else {
+            return Redirect::route('dashboard');
+        }
     }
 
     /**

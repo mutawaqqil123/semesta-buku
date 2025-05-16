@@ -93,6 +93,15 @@
         <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
       @enderror
     </div>
+    <div class="mt-4">
+      <x-input-label for="telepon" :value="__('Telepon')" />
+      <x-text-input id="telepon" class="block mt-1 w-full" type="number" name="telepon" pattern="^\+62\d{9,13}$"
+        :value="old('telepon', $user->profile->telepon)" required autocomplete="tel" />
+      <x-input-error :messages="$errors->get('telepon')" class="mt-2" />
+      @error('telepon')
+        <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
+      @enderror
+    </div>
 
     <!-- Status -->
     <div class="mt-4">
