@@ -45,7 +45,7 @@
           </div>
         </div>
         <div class="col-md-3 text-md-end">
-          <a href="shop.html" class="bj_theme_btn_two style_two wow fadeInRight" data-wow-delay="0.2s">Lihat Semua <i
+          <a href="{{ route('produk') }}" class="bj_theme_btn_two style_two wow fadeInRight" data-wow-delay="0.2s">Lihat Semua <i
               class="arrow_right"></i></a>
         </div>
       </div>

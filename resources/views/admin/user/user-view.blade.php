@@ -138,7 +138,7 @@
                   <div class="input-group">
                     <input type="password" class="form-control" id="password" name="password" required>
                     <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('password')">
-                      <i class="bi bi-eye"></i>
+                      <i data-feather="eye"> </i>
                     </button>
                   </div>
                   @error('password')
@@ -154,7 +154,7 @@
                       name="password_confirmation" required>
                     <button class="btn btn-outline-secondary" type="button"
                       onclick="togglePassword('password_confirmation')">
-                      <i class="bi bi-eye"></i>
+                      <i data-feather="eye"> </i>
                     </button>
                   </div>
                   @error('password_confirmation')
@@ -355,7 +355,7 @@
                       name="password" autocomplete="new-password">
                     <button class="btn btn-outline-secondary" type="button"
                       onclick="togglePassword('password_edit_{{ $item->id }}')">
-                      <i class="bi bi-eye"></i>
+                      <i data-feather="eye"> </i>
                     </button>
                   </div>
                 </div>
@@ -369,7 +369,7 @@
                       name="password_confirmation" autocomplete="new-password">
                     <button class="btn btn-outline-secondary" type="button"
                       onclick="togglePassword('password_confirmation_edit_{{ $item->id }}')">
-                      <i class="bi bi-eye"></i>
+                      <i data-feather="eye"> </i>
                     </button>
                   </div>
                 </div>
@@ -524,6 +524,7 @@
 
     function togglePassword(id) {
       const input = document.getElementById(id);
+    //   const eye = document.getElementById(id)
       if (input.type === "password") {
         input.type = "text";
       } else {
