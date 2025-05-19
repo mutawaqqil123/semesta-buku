@@ -35,19 +35,21 @@
             </a>
           </li>
 
-          <li class="nav-item dropdown submenu {{ request()->routeIs(['landing.blog', 'blog.single']) ? 'active' : '' }}">
-            <a class="nav-link dropdown-toggle" href="{{ route('landing.blog') }}" role="button" data-bs-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
+          {{-- <li
+            class="nav-item dropdown submenu {{ request()->routeIs(['landing.blog', 'blog.single']) ? 'active' : '' }}">
+            <a class="nav-link dropdown-toggle" href="{{ route('landing.blog') }}" role="button"
+              data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Blog
             </a>
             <ul class="dropdown-menu">
               @foreach (\App\Models\BlogCategory::get() as $item)
                 <li class="nav-item {{ request()->query('key') == $item->token_category ? 'active' : '' }}">
-                  <a href="{{ route('landing.blog') }}?key={{ $item->token_category }}" class="nav-link">{{ $item->name }}</a>
+                  <a href="{{ route('landing.blog') }}?key={{ $item->token_category }}"
+                    class="nav-link">{{ $item->name }}</a>
                 </li>
               @endforeach
             </ul>
-          </li>
+          </li> --}}
 
           <li class="nav-item {{ request()->routeIs('faq') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('faq') }}" aria-haspopup="true" aria-expanded="false">
@@ -57,7 +59,12 @@
 
           <li class="nav-item {{ request()->routeIs('kontak') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('kontak') }}" aria-haspopup="true" aria-expanded="false">
-              Kontak
+              Sosmed
+            </a>
+          </li>
+          <li class="nav-item {{ request()->routeIs('saran') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('saran') }}" aria-haspopup="true" aria-expanded="false">
+              Kritik & Saran
             </a>
           </li>
         </ul>
@@ -66,6 +73,63 @@
               class="fa-regular fa-user"></i>Login</a>
           {{-- <a class="bj_theme_btn p-3 ms-3" href="{{ route('register') }}"><i class="fa-regular fa-user"></i>Register</a> --}}
         @endguest
+        <div class="alter_nav">
+          <ul class="navbar-nav search_cart menu">
+            {{-- <li class="nav-item search"><a class="nav-link search-btn" href="javascript:void(0);"><i
+                  class="ti-search"></i></a>
+              <form action="#" method="get" class="menu-search-form">
+                <div class="input-group">
+                  <input type="search" class="form-control" placeholder="Search here..">
+                  <button type="submit"><i class="ti-arrow-right"></i></button>
+                </div>
+              </form>
+            </li> --}}
+            <li class="nav-item shpping-cart dropdown submenu">
+            @php
+                $newBlogCount = \App\Models\Blog::where('created_at', '>=', now()->subHours(12))->count();
+            @endphp
+            <a class="cart-btn nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="ti-announcement"></i>
+                @if($newBlogCount > 0)
+                    <span class="num">{{ $newBlogCount }}</span>
+                @else
+                    <span class="num">0</span>
+                @endif
+            </a>
+              <div class="dropdown-menu">
+                <ul class=" list-unstyled">
+                  @foreach (\App\Models\Blog::latest()->take(3)->get() as $item)
+                    <li class="cart-single-item clearfix">
+                      {{-- <div class="cart-img">
+                        <img src="assets/img/cart1.jpg" alt="styler">
+                      </div> --}}
+                      <div class="cart-content text-left">
+                        <p class="cart-title"><a href="{{ route('blog.single', $item->slug) }}">{{ $item->title }}</a>
+                        </p>
+                        <p>{{ $item->writer->name }}</p>
+                      </div>
+                      {{-- <div class="cart-remove">
+                        <a href="#" class="action"><span class="ti-close"></span></a>
+                      </div> --}}
+                    </li>
+                  @endforeach
+                </ul>
+                <div class="cart_f">
+                  <div class="cart-pricing">
+                    {{-- <p class="total">Subtotal :<span class="p-total text-end">$<span
+                          class="total-cart-amount"></span></span>
+                    </p> --}}
+                  </div>
+                  <div class="cart-button text-center">
+                    <a href="{{ route('landing.blog') }}" class=" btn btn-cart get_btn pink" style="width: 100%">Lihat Semua</a>
+                    {{-- <a href="checkout.html" class="btn btn-cart get_btn dark">Checkout</a> --}}
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
         @auth
           <div class="dropdown">
             <a class="nav-link d-flex align-items-center" href="#" id="navbarDropdown" role="button"

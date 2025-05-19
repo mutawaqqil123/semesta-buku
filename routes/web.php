@@ -71,6 +71,7 @@ Route::middleware(['guest.auth'])->group(function() {
 
     Route::get('faq', [LandingPageController::class, 'faq'])->name('faq');
     Route::get('kontak', [LandingPageController::class, 'kontak'])->name('kontak');
+    Route::get('saran', [LandingPageController::class, 'saran'])->name('saran');
 
 });
 

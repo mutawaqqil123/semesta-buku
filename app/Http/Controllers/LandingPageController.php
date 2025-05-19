@@ -102,4 +102,9 @@ class LandingPageController extends Controller
 
         return redirect()->back()->with('success', "Berhasil menambahkan");
     }
+
+    public function saran()
+    {
+        return view('landing.other.saran');
+    }
 }
