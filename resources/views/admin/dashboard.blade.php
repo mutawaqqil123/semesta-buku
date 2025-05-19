@@ -25,7 +25,7 @@
                             <div>
                                 <h1>Welcome, {{ auth()->user()->name }}</h1>
                                 <p> Selamat datang di Dasboard Semesta buku by PT. Semesta Infomedia Indonesia</p>
-                                <a class="btn" href="{{ route('book.index') }}">Continue<i data-feather="arrow-right"></i></a>
+                                {{-- <a class="btn" href="{{ route('book.index') }}">Continue<i data-feather="arrow-right"></i></a> --}}
                             </div>
                             <div class="greeting-img">
                                 <img class="img-fluid" src="{{ asset('') }}assets/images/dashboard/profile-greeting/bg.png" alt="">

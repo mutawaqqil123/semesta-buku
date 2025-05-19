@@ -65,21 +65,24 @@
             </div>
           </li>
           <li class="sidebar-list"> <a
-              class="sidebar-link sidebar-title link-nav {{ request()->routeIs(['blogs.index', 'blogs.create', 'blogs.edit']) ? 'bg-primary' : '' }}"
+              class="sidebar-link sidebar-title link-nav {{ request()->routeIs('rate.index') ? 'bg-primary' : '' }}"
               href="{{ route('rate.index') }}"><i data-feather="users"> </i><span>Kritik Saran</span></a></li>
-          @if (auth()->user()->hasRole('super_admin'))
+          {{-- @if (auth()->user()->hasRole('super_admin')) --}}
             <li class="sidebar-list"> <a
-                class="sidebar-link sidebar-title link-nav {{ request()->routeIs(['blogs.index', 'blogs.create', 'blogs.edit']) ? 'bg-primary' : '' }}"
-                href="{{ route('usr.index') }}"><i data-feather="shield"> </i><span>User</span></a></li>
-          @endif
+                class="sidebar-link sidebar-title link-nav {{ request()->routeIs('usr.index') && request('key') == 'admin' ? 'bg-primary' : '' }}"
+                href="{{ route('usr.index') }}?key=admin"><i data-feather="shield"> </i><span>Admin Management</span></a></li>
+            <li class="sidebar-list"> <a
+                class="sidebar-link sidebar-title link-nav {{ request()->routeIs('usr.index') && request('key') == 'user' ? 'bg-primary' : '' }}"
+                href="{{ route('usr.index') }}?key=user"><i data-feather="user-check"> </i><span>User Management</span></a></li>
+          {{-- @endif --}}
         </ul>
         <div class="sidebar-img-section">
-          <div class="sidebar-img-content">
+          <div class="sidebar-img-content" style="margin: 50px 0 100px 0; padding-top: 10px">
             <h4>Semesta Buku <br> Semesta Infomedia Indonesia</h4>
-            <form method="POST" action="{{ route('logout') }}">
+            {{-- <form method="POST" action="{{ route('logout') }}">
               @csrf
               <button type="submit" class="btn btn-primary">Log Out</button>
-            </form>
+            </form> --}}
           </div>
         </div>
       </div>

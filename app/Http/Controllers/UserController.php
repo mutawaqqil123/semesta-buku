@@ -10,10 +10,13 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $role = $request->query('key');
         return view('admin.user.user-view', [
-            'users' => User::with(['profile', 'subscription'])->get(),
+            'users' => $role
+                ? User::role($role)->with(['profile', 'subscription'])->get()
+                : User::with(['profile', 'subscription'])->get(),
             'role' => Role::all(),
         ]);
     }
@@ -24,7 +27,7 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'phone' => 'required|string|max:20',
-            'phone' => 'required|string|max:20',
+            'telepon' => 'required|string|max:20',
             'status' => 'required|in:siswa,mahasiswa,umum',
             'education_level' => 'required|string',
             'custom_education_level' => 'nullable|string',

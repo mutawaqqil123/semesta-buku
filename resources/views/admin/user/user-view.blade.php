@@ -41,13 +41,13 @@
                 </div>
 
                 <!-- Role -->
-                <div class="mb-3">
+                <div class="mb-3" style="display: none">
                   <label for="role" class="form-label">Role</label>
                   <select class="form-select" id="role" name="role" required>
                     <option selected disabled>Pilih Role</option>
-                    <option value="admin" {{ old('role') == 'super_admin' ? 'selected' : '' }}>Super Admin</option>
-                    <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
-                    <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User</option>
+                    {{-- <option value="admin" {{ old('role') || request('key') == 'super_admin' ? 'selected' : '' }}>Super Admin</option> --}}
+                    <option value="admin" {{ old('role') == 'admin' || request('key') == 'admin' ? 'selected' : '' }}>Admin</option>
+                    <option value="user" {{ old('role') == 'user' || request('key') == 'user' ? 'selected' : '' }}>User</option>
                   </select>
                   @error('role')
                     <div class="text-danger">{{ $message }}</div>
@@ -274,12 +274,12 @@
                 </div>
 
                 <!-- Role -->
-                <div class="mb-3">
+                <div class="mb-3" style="display: none">
                   <label for="role_edit_{{ $item->id }}" class="form-label">Role</label>
                   <select class="form-select" id="role_edit_{{ $item->id }}" name="role" required>
                     <option disabled>Pilih Role</option>
-                    <option value="super_admin"
-                      {{ $item->roles->pluck('name')->contains('super_admin') ? 'selected' : '' }}>Super Admin</option>
+                    {{-- <option value="super_admin"
+                      {{ $item->roles->pluck('name')->contains('super_admin') ? 'selected' : '' }}>Super Admin</option> --}}
                     <option value="admin" {{ $item->roles->pluck('name')->contains('admin') ? 'selected' : '' }}>
                       Admin</option>
                     <option value="user" {{ $item->roles->pluck('name')->contains('user') ? 'selected' : '' }}>User

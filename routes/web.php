@@ -54,6 +54,8 @@ Route::middleware(['auth', 'verified', 'role:admin|super_admin'])->group(functio
 
     Route::post('/upload', [BlogController::class, 'upload'])->name('ckeditor.upload');
 
+    Route::resource('usr', UserController::class)->only(['index', 'store', 'update', 'destroy']);
+
 });
 
 Route::middleware(['guest.auth'])->group(function() {
@@ -72,9 +74,9 @@ Route::middleware(['guest.auth'])->group(function() {
 
 });
 
-Route::middleware(['auth', 'role:super_admin', 'verified'])->group(function () {
-    Route::resource('usr', UserController::class)->only(['index', 'store', 'update', 'destroy']);
-});
+// Route::middleware(['auth', 'role:super_admin', 'verified'])->group(function () {
+//     Route::resource('usr', UserController::class)->only(['index', 'store', 'update', 'destroy']);
+// });
 
 Route::middleware(['auth', 'role:user', 'verified'])->group(function () {
     Route::get('subscribtion/{plan}', [SubscriptionController::class, 'store'])->name('subscribe.store');
