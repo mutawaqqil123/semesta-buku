@@ -68,11 +68,7 @@
             </a>
           </li>
         </ul>
-        @guest
-          <a class="bj_theme_btn strock_btn hidden-sm hidden-xs" href="{{ route('login') }}"><i
-              class="fa-regular fa-user"></i>Login</a>
-          {{-- <a class="bj_theme_btn p-3 ms-3" href="{{ route('register') }}"><i class="fa-regular fa-user"></i>Register</a> --}}
-        @endguest
+
         <div class="alter_nav">
           <ul class="navbar-nav search_cart menu">
             {{-- <li class="nav-item search"><a class="nav-link search-btn" href="javascript:void(0);"><i
@@ -130,6 +126,11 @@
             </li>
           </ul>
         </div>
+        @guest
+          <a class="bj_theme_btn strock_btn hidden-sm hidden-xs" href="{{ route('login') }}"><i
+              class="fa-regular fa-user"></i>Login</a>
+          {{-- <a class="bj_theme_btn p-3 ms-3" href="{{ route('register') }}"><i class="fa-regular fa-user"></i>Register</a> --}}
+        @endguest
         @auth
           <div class="dropdown">
             <a class="nav-link d-flex align-items-center" href="#" id="navbarDropdown" role="button"

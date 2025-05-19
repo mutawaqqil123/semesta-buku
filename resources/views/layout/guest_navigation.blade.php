@@ -50,11 +50,11 @@
                         {{ __('SUBSCRIBE') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('landing.blog')" :active="request()->routeIs('profile.edit')">
                         {{ __('BLOG') }}
                     </x-nav-link>
-                </div>
+                </div> --}}
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('faq')" :active="request()->routeIs('profile.edit')">
                         {{ __('FAQ') }}
@@ -62,7 +62,12 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('kontak')" :active="request()->routeIs('profile.edit')">
-                        {{ __('KONTAK') }}
+                        {{ __('SOSMED') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('saran')" :active="request()->routeIs('profile.edit')">
+                        {{ __('KRITIK & SARAN') }}
                     </x-nav-link>
                 </div>
             </div>
