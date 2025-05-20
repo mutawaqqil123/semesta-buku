@@ -45,7 +45,7 @@
 
           <li class="sidebar-list"> <a
               class="sidebar-link sidebar-title link-nav {{ request()->routeIs(['plan.index', 'plan.create', 'plan.edit']) ? 'bg-primary' : '' }}"
-              href="{{ route('plan.index') }}"><i data-feather="shopping-bag"> </i><span>Plan</span></a></li>
+              href="{{ route('plan.index') }}"><i data-feather="shopping-bag"> </i><span>Harga Paket</span></a></li>
 
           <li class="sidebar-main-title">
             <div>

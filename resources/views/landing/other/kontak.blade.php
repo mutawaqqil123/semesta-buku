@@ -25,6 +25,12 @@
             <div class="card-body">
               <h5 class="card-title">Telepon</h5>
               <p class="card-text">- (021) 123-4567</p>
+              {{-- <p class="card-text">- 087 887 811 344</p> --}}
+            </div>
+          </div>
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title">WhatsApp</h5>
               <p class="card-text mb-0">
                 - <a href="https://wa.me/6282141919033" target="_blank" class="text-success text-decoration-none">
                     <i class="fab fa-whatsapp"></i> Admin: 0821 4191 9033
@@ -38,6 +44,7 @@
               {{-- <p class="card-text">- 087 887 811 344</p> --}}
             </div>
           </div>
+
           <div class="card mb-4">
             <div class="card-body">
               <h5 class="card-title">Jam Operasional</h5>

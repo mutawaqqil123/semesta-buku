@@ -31,7 +31,7 @@
           </li>
           <li class="nav-item {{ request()->routeIs('subscribe.index') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('subscribe.index') }}" aria-haspopup="true" aria-expanded="false">
-              Subscribe
+              Harga Paket
             </a>
           </li>
 
@@ -95,11 +95,11 @@
             </a>
               <div class="dropdown-menu">
                 <ul class=" list-unstyled">
-                  @foreach (\App\Models\Blog::latest()->take(3)->get() as $item)
+                  @foreach (\App\Models\Blog::latest()->get() as $item)
                     <li class="cart-single-item clearfix">
-                      {{-- <div class="cart-img">
-                        <img src="assets/img/cart1.jpg" alt="styler">
-                      </div> --}}
+                      <div class="cart-img">
+                        <img src="{{ asset($item->thumbnail) }}" alt="styler">
+                      </div>
                       <div class="cart-content text-left">
                         <p class="cart-title"><a href="{{ route('blog.single', $item->slug) }}">{{ $item->title }}</a>
                         </p>

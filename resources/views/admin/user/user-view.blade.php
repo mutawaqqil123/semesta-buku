@@ -165,7 +165,7 @@
               </div>
               <div class="card-footer text-end">
                 <a class="btn btn-danger" href="">Reset</a>
-                <button class="btn btn-warning" type="submit">Save changes</button>
+                <button class="btn btn-warning" type="submit">Save</button>
               </div>
             </form>
           </div>
@@ -377,7 +377,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-warning">Save changes</button>
+                <button type="submit" class="btn btn-warning">Save</button>
               </div>
             </div>
           </form>

@@ -47,7 +47,7 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('subscribe.index')" :active="request()->routeIs('profile.edit')">
-                        {{ __('SUBSCRIBE') }}
+                        {{ __('HARGA PAKET') }}
                     </x-nav-link>
                 </div>
                 {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
