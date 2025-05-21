@@ -4,7 +4,7 @@
     <section class="bj_shop_area sec_padding" data-bg-color="#f5f5f5">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
+                {{-- <div class="col-lg-3">
                     <div class="shop_sidebar">
                         <div class="widget filter_widget">
                             <h3 class="shop_sidebar_title"><a href="#"><img src="assets/img/shop/filter.svg" alt=""></a>Filter</h3>
@@ -18,12 +18,12 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-9">
-                    <form role="search" method="GET" class="pr_search_form input-group mb-4" action="#">
+                </div> --}}
+                <div class="col-lg-12">
+                    {{-- <form role="search" method="GET" class="pr_search_form input-group mb-4" action="#">
                         <input type="text" name="s" value="" class="form-control search-field" id="search" placeholder="Serach  off book store..">
                         <button type="submit"><i class="ti-search"></i></button>
-                    </form>
+                    </form> --}}
                     <div class="row">
                         @forelse ($blogs as $blog)
                             <div class="col-xl-3 col-lg-4 col-sm-6 projects_item">
@@ -55,9 +55,9 @@
                                 </div>
                             </div>
                         @endforelse
-                        <div class="col-12 text-center mt-4">
+                        {{-- <div class="col-12 text-center mt-4">
                             <a href="{{ route('landing.blog') }}" class="btn btn-secondary">Reset</a>
-                        </div>
+                        </div> --}}
 
                     </div>
                     <div class="text-center">

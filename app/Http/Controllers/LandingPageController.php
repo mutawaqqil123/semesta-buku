@@ -70,11 +70,11 @@ class LandingPageController extends Controller
         $token = $request->input('key');
 
         $blogs = Blog::with(['category', 'writer'])
-            ->whereHas('category', function ($query) use ($token) {
-                $query->when($token, function ($q) use ($token) {
-                $q->where('token_category', $token);
-                });
-            })
+            // ->whereHas('category', function ($query) use ($token) {
+            //     $query->when($token, function ($q) use ($token) {
+            //     $q->where('token_category', $token);
+            //     });
+            // })
             ->paginate(12)
             ->withQueryString();
 

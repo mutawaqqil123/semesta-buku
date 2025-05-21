@@ -11,7 +11,7 @@
               @session('success')
                 <div class="alert alert-success fw-bold" style="font-size: 1rem;">
                   {{ session('success') }}
-                  Berhasil Menambah
+                  {{-- Berhasil Menambah --}}
                 </div>
               @endsession
             </div>

@@ -81,19 +81,19 @@
               </form>
             </li> --}}
             <li class="nav-item shpping-cart dropdown submenu">
-            @php
+            {{-- @php
                 $newBlogCount = \App\Models\Blog::where('created_at', '>=', now()->subHours(12))->count();
-            @endphp
-            <a class="cart-btn nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+            @endphp --}}
+            <a class="cart-btn nav-link dropdown-toggle" href="{{ route('landing.blog') }}" role="button" data-bs-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <i class="ti-announcement"></i>
-                @if($newBlogCount > 0)
+                {{-- @if($newBlogCount > 0)
                     <span class="num">{{ $newBlogCount }}</span>
                 @else
                     <span class="num">0</span>
-                @endif
+                @endif --}}
             </a>
-              <div class="dropdown-menu">
+              {{-- <div class="dropdown-menu">
                 <ul class=" list-unstyled">
                   @foreach (\App\Models\Blog::latest()->get() as $item)
                     <li class="cart-single-item clearfix">
@@ -105,24 +105,17 @@
                         </p>
                         <p>{{ $item->writer->name }}</p>
                       </div>
-                      {{-- <div class="cart-remove">
-                        <a href="#" class="action"><span class="ti-close"></span></a>
-                      </div> --}}
                     </li>
                   @endforeach
                 </ul>
                 <div class="cart_f">
                   <div class="cart-pricing">
-                    {{-- <p class="total">Subtotal :<span class="p-total text-end">$<span
-                          class="total-cart-amount"></span></span>
-                    </p> --}}
                   </div>
                   <div class="cart-button text-center">
                     <a href="{{ route('landing.blog') }}" class=" btn btn-cart get_btn pink" style="width: 100%">Lihat Semua</a>
-                    {{-- <a href="checkout.html" class="btn btn-cart get_btn dark">Checkout</a> --}}
                   </div>
                 </div>
-              </div>
+              </div> --}}
             </li>
           </ul>
         </div>
