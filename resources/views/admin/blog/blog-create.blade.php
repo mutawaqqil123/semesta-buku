@@ -46,7 +46,7 @@
                       <input type="text" name="title" id="title" class="form-control" required>
                     </div>
 
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                       <label for="blog_category_id" class="form-label">Kategori</label>
                       <select name="blog_category_id" id="blog_category_id" class="form-select" required>
                         <option value="" disabled selected>Pilih Kategori</option>
@@ -54,7 +54,7 @@
                           <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
                       </select>
-                    </div>
+                    </div> --}}
                   </div>
 
                   <!-- Kanan -->

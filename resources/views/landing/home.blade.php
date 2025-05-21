@@ -14,7 +14,7 @@
               memiliki banyak buku teks untuk ditawarkan kepada Anda.
             </p>
             <div class="d-flex flex-wrap">
-              <a href="#" class="bj_theme_btn wow fadeInLeft" data-wow-delay="0.6s">Subscribe</a>
+              {{-- <a href="#" class="bj_theme_btn wow fadeInLeft" data-wow-delay="0.6s">Subscribe</a> --}}
             </div>
           </div>
         </div>

@@ -49,16 +49,16 @@
 
           <li class="sidebar-main-title">
             <div>
-              <h4 class="">Blog </h4>
+              <h4 class="">Berita </h4>
             </div>
           </li>
 
-          <li class="sidebar-list"> <a
+          {{-- <li class="sidebar-list"> <a
               class="sidebar-link sidebar-title link-nav {{ request()->routeIs('blog_kategori.index') ? 'bg-primary' : '' }}"
-              href="{{ route('blog_kategori.index') }}"><i data-feather="list"> </i><span>Blog Kategori</span></a></li>
+              href="{{ route('blog_kategori.index') }}"><i data-feather="list"> </i><span>Blog Kategori</span></a></li> --}}
           <li class="sidebar-list"> <a
               class="sidebar-link sidebar-title link-nav {{ request()->routeIs(['blogs.index', 'blogs.create', 'blogs.edit']) ? 'bg-primary' : '' }}"
-              href="{{ route('blogs.index') }}"><i data-feather="file-text"> </i><span>Berita</span></a></li>
+              href="{{ route('blogs.index') }}"><i data-feather="file-text"> </i><span>Daftar Berita</span></a></li>
           <li class="sidebar-main-title">
             <div>
               <h4 class="">Other & Setting </h4>

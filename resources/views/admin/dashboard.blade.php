@@ -7,12 +7,12 @@
                     <div class="col-6">
                         <h3> Selamat Datang</h3>
                     </div>
-                    <div class="col-6">
+                    {{-- <div class="col-6">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html"> <i data-feather="home"></i></a></li>
                             <li class="breadcrumb-item active">Welcome</li>
                         </ol>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

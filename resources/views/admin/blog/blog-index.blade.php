@@ -1,17 +1,17 @@
 <x-template>
-  <x-slot:title>Admin Semesta Buku - Blog</x-slot:title>
+  <x-slot:title>Admin Semesta Buku - Berita</x-slot:title>
   <div class="page-body">
     <div class="container-fluid">
       <div class="page-title">
         <div class="row">
           <div class="col-6">
-            <h3>Blog</h3>
+            <h3>Berita</h3>
           </div>
           <div class="col-6">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"> <i data-feather="home"></i></a></li>
               <li class="breadcrumb-item">Menu</li>
-              <li class="breadcrumb-item active">Blog</li>
+              <li class="breadcrumb-item active">Berita</li>
             </ol>
           </div>
         </div>
@@ -23,9 +23,9 @@
         <div class="col-sm-12">
           <div class="card">
             <div class="card-header py-3 border-bottom d-flex justify-content-between align-items-center">
-              <h3>List Blog</h3>
+              <h3>List Berita</h3>
               <h4>Total: {{ $blogs->count() }}</h4>
-              <a href="{{ route('blogs.create') }}" class="btn btn-primary">+ Tambah Blog</a>
+              <a href="{{ route('blogs.create') }}" class="btn btn-primary">+ Tambah Berita</a>
             </div>
             <div class="card-body">
               <div class="dt-ext table-responsive">
@@ -35,7 +35,7 @@
                     <td>Nama</td>
                     <td>Penulis</td>
                     <td>Tanggal Publikasi</td>
-                    <td>Kategori</td>
+                    {{-- <td>Kategori</td> --}}
                     <td>Action</td>
                   </thead>
                   <tbody>
@@ -54,7 +54,7 @@
                         </td>
                         <td>{{ $blog->writer->name }}</td>
                         <td class="text-center">{{ $blog->created_at->format('d m Y') }}</td>
-                        <td class="text-center">{{ $blog->category->name }}</td>
+                        {{-- <td class="text-center">{{ $blog->category->name }}</td> --}}
                         <td>
                           <ul class="action">
                             <li class="edit"> <a href="{{ route('blogs.edit', $blog->token_blog) }}"><i

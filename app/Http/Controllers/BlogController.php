@@ -54,7 +54,7 @@ class BlogController extends Controller
             'slug' => $this->generateSlug($request->title),
             'thumbnail' => $path . $file_name,
             'content' => $request->content,
-            'blog_category_id' => $request->blog_category_id,
+            // 'blog_category_id' => $request->blog_category_id,
             'user_id' => Auth::user()->id
         ];
 
@@ -100,7 +100,7 @@ class BlogController extends Controller
             'slug' => $this->generateSlug($request->title),
             'thumbnail' => $thumbnail,
             'content' => $request->content,
-            'blog_category_id' => $request->blog_category_id,
+            // 'blog_category_id' => $request->blog_category_id,
             'user_id' => Auth::user()->id
         ];
 
