@@ -16,7 +16,7 @@
                   <p>
                     {{ $plan->description }}
                   </p>
-                  <a href="{{ route('subscribe.store', $plan->token_plan) }}" class="w-100 btn btn-lg btn-primary">Subscribe</a>
+                  <a href="{{ route('subscribe.store', $plan->token_plan) }}" class="w-100 btn btn-lg btn-primary">Beli Paket</a>
                 </div>
               </div>
             </div>
