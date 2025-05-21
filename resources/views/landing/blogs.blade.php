@@ -38,12 +38,17 @@
                                                 <img src="assets/img/star-1.png" alt="">4.9
                                             </div>
                                         </div>
-                                        <a href="{{ route('blog.single', $blog->slug) }}" class="bj_theme_btn" >Check
-                                        </a>
+                                        {{-- <a href="{{ route('blog.single', $blog->slug) }}" class="bj_theme_btn" >Check
+                                        </a> --}}
                                     </div>
                                     <div class="bj_new_pr_content">
                                         <a href="{{ route('blog.single', $blog->slug) }}">
                                             <h4 class="bj_new_pr_title">{{ $blog->title }}</h4>
+                                        </a>
+                                    </div>
+                                    <div class="mt-3 text-end">
+                                        <a href="{{ route('blog.single', $blog->slug) }}" class="btn btn-primary">
+                                            Learn More
                                         </a>
                                     </div>
                                 </div>

@@ -52,12 +52,60 @@
                         <td>
                           <ul class="action">
 
+                            <li class="edit"><a role="button" data-bs-toggle="modal"
+                                data-bs-target="#editModal{{ $rate->token_rating }}"><i class="icon-pencil"></i></a>
+                            </li>
                             <li class="delete"><a role="button" data-bs-toggle="modal"
                                 data-bs-target="#deleteModal{{ $rate->token_rating }}"><i class="icon-trash"></i></a>
                             </li>
                           </ul>
                         </td>
                       </tr>
+
+                        <!-- Modal Edit -->
+                        <div class="modal fade" id="editModal{{ $rate->token_rating }}" tabindex="-1"
+                          data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="editModalLabel{{ $rate->token_rating }}"
+                          aria-hidden="true">
+                          <div class="modal-dialog modal-md" role="document">
+                            <div class="modal-content">
+                              <form action="{{ route('rate.update', $rate->token_rating) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="editModalLabel{{ $rate->token_rating }}">
+                                    Edit Kritik Saran dari {{ $rate->user->name }}
+                                  </h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="mb-3">
+                                    <label class="form-label">Rating</label>
+                                    <div class="text-center">
+                                      @for ($i = 1; $i <= 5; $i++)
+                                        <input type="radio" class="btn-check" name="rating" id="star{{ $i }}-{{ $rate->token_rating }}" value="{{ $i }}" {{ $rate->rating == $i ? 'checked' : '' }}>
+                                        <label class="btn btn-outline-warning" for="star{{ $i }}-{{ $rate->token_rating }}">
+                                          <i class="fa fa-star"></i>
+                                        </label>
+                                      @endfor
+                                    </div>
+                                  </div>
+                                  <div class="mb-3">
+                                    <label class="form-label">Text</label>
+                                    <textarea name="text" class="form-control" rows="3" required>{{ $rate->text }}</textarea>
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                    Close
+                                  </button>
+                                  <button type="submit" class="btn btn-primary">Update</button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+
 
                       <!-- Modal Body -->
                       <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->

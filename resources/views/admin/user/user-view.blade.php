@@ -91,6 +91,14 @@
                     <div class="text-danger">{{ $message }}</div>
                   @enderror
                 </div>
+                <div class="mb-3">
+                  <label for="whatsapp" class="form-label">Nomor WA 2</label>
+                  <input type="text" class="form-control" id="whatsapp" name="whatsapp" value="{{ old('whatsapp') }}"
+                    required>
+                  @error('whatsapp')
+                    <div class="text-danger">{{ $message }}</div>
+                  @enderror
+                </div>
 
                 <!-- Status -->
                 <div class="mb-3">
@@ -185,6 +193,7 @@
                       <th>Name</th>
                       <th>Email</th>
                       <th>Role</th>
+                      <th>Kontak</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -205,6 +214,13 @@
                               @endif
                             @endif
                           </small>
+                        </td>
+                        <td>
+                          <div>
+                            <strong>Telp:</strong> {{ $item->profile->phone ?? '-' }}<br>
+                            <strong>WA:</strong> {{ $item->profile->telepon ?? '-' }}<br>
+                            <strong>WA 2:</strong> {{ $item->profile->whatsapp ?? '-' }}
+                          </div>
                         </td>
                         <td>
                           <ul class="action">
@@ -311,6 +327,11 @@
                   <label for="phone_edit_{{ $item->id }}" class="form-label">Nomor WA</label>
                   <input type="text" class="form-control" id="phone_edit_{{ $item->id }}" name="telepon"
                     value="{{ $item->profile->telepon }}" required>
+                </div>
+                <div class="mb-3">
+                  <label for="phone_edit_{{ $item->id }}" class="form-label">Nomor WA 2</label>
+                  <input type="text" class="form-control" id="phone_edit_{{ $item->id }}" name="whatsapp"
+                    value="{{ $item->profile->whatsapp }}" required>
                 </div>
 
                 <!-- Status -->

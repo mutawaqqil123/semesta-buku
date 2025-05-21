@@ -25,7 +25,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware(['auth', 'verified', 'role:admin|super_admin'])->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::resource('rate', RateController::class)->only('index');
+    Route::resource('rate', RateController::class)->only(['index', 'update']);
     Route::get('rate/{rating}', [RateController::class, 'destroy'])->name('rate.remove');
 
     // kategori

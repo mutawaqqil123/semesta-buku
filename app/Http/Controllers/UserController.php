@@ -28,6 +28,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email',
             'phone' => 'required|string|max:20',
             'telepon' => 'required|string|max:20',
+            'whatsapp' => 'required|string|max:20',
             'status' => 'required|in:siswa,mahasiswa,umum',
             'education_level' => 'required|string',
             'custom_education_level' => 'nullable|string',
@@ -60,6 +61,7 @@ class UserController extends Controller
         $user->profile()->create([
             'phone' => $validated['phone'],
             'telepon' => $validated['telepon'],
+            'whatsapp' => $validated['whatsapp'],
             'status' => $validated['status'],
             'jenjang' => $finalEducationLevel,
             'avatar' => $avatarPath,
@@ -86,6 +88,7 @@ class UserController extends Controller
             'email.unique' => 'Email sudah digunakan.',
             'phone.required' => 'Nomor telepon wajib diisi.',
             'telepon.required' => 'Nomor telepon wajib diisi.',
+            'whatsapp.required' => 'Nomor whatsapp wajib diisi.',
             'status.required' => 'Status wajib dipilih.',
             'status.in' => 'Status tidak valid.',
             'education_level.required' => 'Jenjang pendidikan wajib dipilih.',
@@ -103,6 +106,7 @@ class UserController extends Controller
                 'email' => 'required|email|unique:users,email,' . $user->id,
                 'phone' => 'required|string|max:20',
                 'telepon' => 'required|string|max:20',
+                'whatsapp' => 'required|string|max:20',
                 'status' => 'required|in:siswa,mahasiswa,umum',
                 'education_level' => 'required|string',
                 'custom_education_level' => 'nullable|string',
@@ -138,7 +142,8 @@ class UserController extends Controller
 
         $user->profile()->update([
             'phone' => $validated['phone'],
-            'phone' => $validated['telepon'],
+            'telepon' => $validated['telepon'],
+            'whatsapp' => $validated['whatsapp'],
             'status' => $validated['status'],
             'jenjang' => $finalEducationLevel,
             'avatar' => $avatarPath,

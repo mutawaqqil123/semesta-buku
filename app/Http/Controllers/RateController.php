@@ -21,4 +21,12 @@ class RateController extends Controller
 
         return redirect()->back()->with('success', 'Rating telah dihapus');
     }
+
+    public function update(Request $request, $id)
+    {
+        $rating = Rating::find($id);
+        $rating->update($request->all());
+
+        return redirect()->back()->with('success', 'Rating telah diupdate');
+    }
 }
