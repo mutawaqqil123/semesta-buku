@@ -29,8 +29,8 @@
           </li>
           <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav {{ request()->routeIs('dashboard') ? 'bg-primary' : '' }}" href="{{ route('dashboard') }}"><i
                 data-feather="home"> </i><span>Dasboard</span></a></li> --}}
-          <li class="sidebar-main-title">
-            <div>
+          <li class="sidebar-main-title ">
+            <div class="text-center bg-info">
               <h4 class="">Data Master </h4>
             </div>
           </li>
@@ -48,7 +48,7 @@
               href="{{ route('plan.index') }}"><i data-feather="shopping-bag"> </i><span>Harga Paket</span></a></li>
 
           <li class="sidebar-main-title">
-            <div>
+            <div class="text-center bg-info">
               <h4 class="">Berita </h4>
             </div>
           </li>
@@ -60,7 +60,7 @@
               class="sidebar-link sidebar-title link-nav {{ request()->routeIs(['blogs.index', 'blogs.create', 'blogs.edit']) ? 'bg-primary' : '' }}"
               href="{{ route('blogs.index') }}"><i data-feather="file-text"> </i><span>Daftar Berita</span></a></li>
           <li class="sidebar-main-title">
-            <div>
+            <div class="text-center bg-info">
               <h4 class="">Other & Setting </h4>
             </div>
           </li>

@@ -43,7 +43,12 @@
                   <div class="col-md-8">
                     <div class="mb-3">
                       <label for="title" class="form-label">Judul</label>
-                      <input type="text" name="title" id="title" class="form-control" required>
+                      <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" required value="{{ old('title') }}">
+                      @error('title')
+                        <div class="invalid-feedback">
+                          {{ $message }}
+                        </div>
+                      @enderror
                     </div>
 
                     {{-- <div class="mb-3">
@@ -61,17 +66,27 @@
                   <div class="col-md-4">
                     <div class="mb-3">
                       <label for="thumbnail" class="form-label">Thumbnail</label>
-                      <input type="file" name="thumbnail" id="thumbnail" class="form-control" accept="image/*"
+                      <input type="file" name="thumbnail" id="thumbnail" class="form-control @error('thumbnail') is-invalid @enderror" accept="image/*"
                         onchange="previewThumbnail(event)" required>
                       <img id="thumbnail-preview" src="#" alt="Preview" class="img-fluid mt-2 d-none"
                         style="max-height: 200px;">
+                      @error('thumbnail')
+                        <div class="invalid-feedback">
+                          {{ $message }}
+                        </div>
+                      @enderror
                     </div>
                   </div>
 
                   <div class="col-md-12">
                     <div class="mb-3">
                         <label for="content">Konten</label>
-                        <textarea name="content" id="content" cols="30" rows="10"></textarea>
+                        <textarea name="content" id="content" cols="30" rows="10" class="form-control @error('content') is-invalid @enderror">{{ old('content') }}</textarea>
+                        @error('content')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                   </div>
                 </div>

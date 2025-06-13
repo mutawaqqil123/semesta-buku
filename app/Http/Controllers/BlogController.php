@@ -41,6 +41,22 @@ class BlogController extends Controller
 
     public function store(Request $request)
     {
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'content' => 'required|string',
+            // 'blog_category_id' => 'required|exists:blog_categories,id',
+        ], [
+            'title.required' => 'Judul blog harus diisi.',
+            'thumbnail.required' => 'Thumbnail blog harus diunggah.',
+            'thumbnail.image' => 'File yang diunggah harus berupa gambar.',
+            'thumbnail.mimes' => 'Gambar harus berformat jpeg, png, jpg, gif, atau svg.',
+            'thumbnail.max' => 'Ukuran gambar tidak boleh lebih dari 2MB.',
+            'content.required' => 'Konten blog harus diisi.',
+            // 'blog_category_id.required' => 'Kategori blog harus dipilih.',
+        ]);
+
         $token = Str::random(16);
 
         $file = $request->file('thumbnail');
@@ -76,6 +92,22 @@ class BlogController extends Controller
 
     public function update(Request $request, Blog $blog)
     {
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'content' => 'required|string',
+            // 'blog_category_id' => 'required|exists:blog_categories,id',
+        ], [
+            'title.required' => 'Judul blog harus diisi.',
+            'thumbnail.required' => 'Thumbnail blog harus diunggah.',
+            'thumbnail.image' => 'File yang diunggah harus berupa gambar.',
+            'thumbnail.mimes' => 'Gambar harus berformat jpeg, png, jpg, gif, atau svg.',
+            'thumbnail.max' => 'Ukuran gambar tidak boleh lebih dari 2MB.',
+            'content.required' => 'Konten blog harus diisi.',
+            // 'blog_category_id.required' => 'Kategori blog harus dipilih.',
+        ]);
+
         $token = Str::random(16);
 
         if($request->hasFile('thumbnail')){

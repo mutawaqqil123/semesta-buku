@@ -31,6 +31,30 @@ class BookController extends Controller
 
     public function store(Request $request)
     {
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'publisher' => 'required|string|max:255',
+            'year' => 'required|integer|min:1900|max:' . date('Y'),
+            'status' => 'required|in:available,unavailable',
+            'description' => 'nullable|string',
+            'cover' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category' => 'required|array',
+        ], [
+            'title.required' => 'Judul buku harus diisi',
+            'author.required' => 'Penulis buku harus diisi',
+            'publisher.required' => 'Penerbit buku harus diisi',
+            'year.required' => 'Tahun terbit buku harus diisi',
+            'status.required' => 'Status buku harus dipilih',
+            'cover.required' => 'Cover buku harus diunggah',
+            'cover.image' => 'File cover harus berupa gambar',
+            'cover.mimes' => 'Cover harus berformat jpeg, png, jpg, gif, atau svg',
+            'cover.max' => 'Ukuran cover maksimal 2MB',
+            'file.required' => 'File buku harus diunggah',
+            'category.required' => 'Kategori buku harus dipilih',
+        ]);
+
         // dd($request->all());
         if ($request->hasFile('cover')) {
             $cover = $request->file('cover');
@@ -120,6 +144,30 @@ class BookController extends Controller
 
     public function update(Request $request, Book $book)
     {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'publisher' => 'required|string|max:255',
+            'year' => 'required|integer|min:1900|max:' . date('Y'),
+            'status' => 'required|in:available,unavailable',
+            'description' => 'nullable|string',
+            'cover' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'file' => 'nullable|file|mimes:pdf|max:20480', // 20MB
+            'category' => 'required|array',
+        ], [
+            'title.required' => 'Judul buku harus diisi',
+            'author.required' => 'Penulis buku harus diisi',
+            'publisher.required' => 'Penerbit buku harus diisi',
+            'year.required' => 'Tahun terbit buku harus diisi',
+            'status.required' => 'Status buku harus dipilih',
+            'cover.image' => 'File cover harus berupa gambar',
+            'cover.mimes' => 'Cover harus berformat jpeg, png, jpg, gif, atau svg',
+            'cover.max' => 'Ukuran cover maksimal 2MB',
+            'file.mimes' => 'File buku harus berformat PDF',
+            'file.max' => 'Ukuran file buku maksimal 20MB',
+            'category.required' => 'Kategori buku harus dipilih',
+        ]);
+
         $data = $request->only(['title', 'author', 'publisher', 'year', 'status', 'description']);
 
         if ($request->hasFile('cover')) {

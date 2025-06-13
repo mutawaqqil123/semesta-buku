@@ -35,6 +35,24 @@ class UserController extends Controller
             'avatar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'password' => 'required|string|confirmed|min:8',
             'role' => 'required',
+        ],
+        [
+            'name.required' => 'Nama wajib diisi.',
+            'email.required' => 'Email wajib diisi.',
+            'email.email' => 'Format email tidak valid.',
+            'email.unique' => 'Email sudah digunakan.',
+            'phone.required' => 'Nomor telepon wajib diisi.',
+            'telepon.required' => 'Nomor telepon wajib diisi.',
+            'whatsapp.required' => 'Nomor whatsapp wajib diisi.',
+            'status.required' => 'Status wajib dipilih.',
+            'status.in' => 'Status tidak valid.',
+            'education_level.required' => 'Jenjang pendidikan wajib dipilih.',
+            'avatar.image' => 'Avatar harus berupa gambar.',
+            'avatar.mimes' => 'Avatar hanya boleh jpg, jpeg, atau png.',
+            'avatar.max' => 'Ukuran avatar maksimal 2MB.',
+            'password.confirmed' => 'Konfirmasi password tidak cocok.',
+            'password.min' => 'Password minimal 8 karakter.',
+            'role.required' => 'Role wajib dipilih.',
         ]);
 
         // Cek apakah pilihannya 'other', kalau iya ambil dari custom

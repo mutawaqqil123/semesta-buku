@@ -18,6 +18,16 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ],[
+            'name.required' => 'Nama kategori harus diisi',
+            'icon.required' => 'Ikon kategori harus diunggah',
+            'icon.image' => 'File yang diunggah harus berupa gambar',
+            'icon.mimes' => 'Gambar harus berformat jpeg, png, jpg, gif, atau svg',
+            'icon.max' => 'Ukuran gambar maksimal 2MB'
+        ]);
 
         $icon = $request->file('icon');
         $icon_name = time() . '.' . $icon->getClientOriginalExtension();
@@ -39,6 +49,16 @@ class CategoryController extends Controller
 
     public function update(Request $request, Category $category)
     {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ],[
+            'name.required' => 'Nama kategori harus diisi',
+            'icon.image' => 'File yang diunggah harus berupa gambar',
+            'icon.mimes' => 'Gambar harus berformat jpeg, png, jpg, gif, atau svg',
+            'icon.max' => 'Ukuran gambar maksimal 2MB'
+        ]);
+
         $path = 'images/category';
         if($request->hasFile('icon')){
             $icon = $request->file('icon');
